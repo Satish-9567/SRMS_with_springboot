@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students - Teacher Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .container {
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Admin Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/students">Manage Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/results">View Results</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/add/result">Add Result </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="text-center mb-4">Manage Students</h2>
+
+    <!-- Button to add a new student -->
+    <a href="/admin/addStudent" class="btn btn-primary mb-4">Add New Student</a>
+
+    <!-- Students table -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Roll Number</th>
+            <th>Name</th>
+
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.rollnumber}"></td>
+            <td th:text="${student.name}"></td>
+
+            <td>
+                <a th:href="@{/admin/updateStudent/{id}(id=${student.id})}" class="btn btn-warning btn-sm">Update</a>
+                <a th:href="@{/admin/deleteStudent/{id}(id=${student.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .result-table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Student Result Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/student/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/student/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h2 class="mb-4">Student Result</h2>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Result for Roll Number: <span th:text="${result.rollNumber}">Roll Number</span></h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered result-table">
+                <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Marks Obtained</th>
+                    <th>Total Marks</th>
+                    <th>Grade</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Hindi</td>
+                    <td th:text="${result.marksHindi}">0</td>
+                    <td>100</td>
+                    <td th:text="${result.getGrade(result.marksHindi)}">Grade</td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td th:text="${result.marksEnglish}">0</td>
+                    <td>100</td>
+                    <td th:text="${result.getGrade(result.marksEnglish)}">Grade</td>
+                </tr>
+                <tr>
+                    <td>Science</td>
+                    <td th:text="${result.marksScience}">0</td>
+                    <td>100</td>
+                    <td th:text="${result.getGrade(result.marksScience)}">Grade</td>
+                </tr>
+                <tr>
+                    <td>Math</td>
+                    <td th:text="${result.marksMath}">0</td>
+                    <td>100</td>
+                    <td th:text="${result.getGrade(result.marksMath)}">Grade</td>
+                </tr>
+                <tr>
+                    <td>Social Science</td>
+                    <td th:text="${result.marksSocialScience}">0</td>
+                    <td>100</td>
+                    <td th:text="${result.getGrade(result.marksSocialScience)}">Grade</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td th:text="${result.totalMarks}">0</td>
+                    <td>500</td>
+                    <td></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Student Result Management System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Background image styling */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Overlay to darken the background for better text readability */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        /* Content styling to ensure it's above the overlay */
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="container d-flex justify-content-center align-items-center content" style="min-height: 100vh;">
+    <div class="login-form">
+        <h2 class="text-center mb-4 text-dark">Student Login</h2>
+
+        <!-- Error message section -->
+        <div th:if="${error}" class="error-message text-center">
+            <p th:text="${error}">Invalid roll number or password. Please try again.</p>
+        </div>
+
+        <form th:action="@{/student/home}" method="get">
+            <div class="form-group">
+                <label for="rollNumber" class="text-dark">Roll Number</label>
+                <input type="text" class="form-control" id="rollNumber" name="rollNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="password" class="text-dark">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

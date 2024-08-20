@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Result - Admin</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .container {
+            padding-top: 20px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .result-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .result-table th, .result-table td {
+            text-align: center;
+        }
+        .result-table th {
+            background-color: #343a40;
+            color: white;
+        }
+        .result-table td {
+            background-color: #ffffff;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Admin Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/dashboard">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/students">Manage Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/results">View Results</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/add/result">Add Result <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/logout">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="result-header">Update Student Result</h2>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/update/result/{id}(id=${result.id})}" th:object="${result}" method="post">
+                <div class="form-group">
+                    <label for="rollNumber">Roll Number</label>
+                    <input type="text" class="form-control" id="rollNumber" th:field="*{id}" placeholder="Enter roll number" readonly >
+                </div>
+                <table class="table table-bordered result-table">
+                    <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Hindi</td>
+                        <td><input type="number" class="form-control" th:field="*{hindi}" placeholder="Enter marks for Hindi" min="0" max="100" required></td>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td><input type="number" class="form-control" th:field="*{english}" placeholder="Enter marks for English" min="0" max="100" required></td>
+                    </tr>
+                    <tr>
+                        <td>Science</td>
+                        <td><input type="number" class="form-control" th:field="*{science}" placeholder="Enter marks for Science" min="0" max="100" required></td>
+                    </tr>
+                    <tr>
+                        <td>Math</td>
+                        <td><input type="number" class="form-control" th:field="*{math}" placeholder="Enter marks for Math" min="0" max="100" required></td>
+                    </tr>
+                    <tr>
+                        <td>Social Science</td>
+                        <td><input type="number" class="form-control" th:field="*{social_science}" placeholder="Enter marks for Social Science" min="0" max="100" required></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Update Result</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

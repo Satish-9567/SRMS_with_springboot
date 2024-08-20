@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Background image styling */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        /* Overlay to darken the background for better text readability */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        /* Content styling to ensure it's above the overlay */
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<div class="container content" style="min-height: 100vh;">
+    <div class="row">
+        <div class="col-md-12 text-center mt-5">
+            <h1>Student Dashboard</h1>
+            <p class="lead">Welcome to your dashboard. Here you can view your results and more.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6 mb-3">
+            <a th:href="@{/viewResults/{id}(id=${student.rollnumber})}" class="btn btn-primary btn-lg btn-block">View Results</a>
+        </div>
+        <div class="col-md-6 mb-3">
+            <a th:href="@{/update/profile/{id}(id=${student.id})}" class="btn btn-secondary btn-lg btn-block">Update Profile</a>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Results - Student Result Management System</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Background image styling */
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container styling */
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-dark {
+            color: #343a40;
+        }
+
+        table th, table td {
+            text-align: center;
+        }
+
+        .total-row {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Student Results</h2>
+
+    <!-- Display student information -->
+    <div class="text-center mb-4">
+        <h4 class="text-dark">Roll Number: <span th:text="${result.id}"></span></h4>
+    </div>
+
+    <!-- Results table -->
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Total Marks</th>
+            <th>Marks Obtained</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Hindi</td>
+            <td>100</td>
+            <td th:text="${result.hindi}">0</td>
+        </tr>
+        <tr>
+            <td>English</td>
+            <td>100</td>
+            <td th:text="${result.english}">0</td>
+        </tr>
+        <tr>
+            <td>Science</td>
+            <td>100</td>
+            <td th:text="${result.science}">0</td>
+        </tr>
+        <tr>
+            <td>Math</td>
+            <td>100</td>
+            <td th:text="${result.math}">0</td>
+        </tr>
+        <tr>
+            <td>Social Science</td>
+            <td>100</td>
+            <td th:text="${result.social_science}">0</td>
+        </tr>
+        <!-- Total and Percentage rows if needed -->
+        <!--
+        <tr class="total-row">
+            <th>Total</th>
+            <th th:text="${result.totalMarks}">0</th>
+            <th th:text="${result.totalMarksObtained}">0</th>
+        </tr>
+        <tr class="total-row">
+            <th>Percentage</th>
+            <th colspan="2" th:text="${result.percentage + '%'}">0%</th>
+        </tr>
+        -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
